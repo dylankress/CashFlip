@@ -1,0 +1,158 @@
+h1 {
+  font-weight: bold;
+}
+
+p {
+  color: #a6a6a6;
+}
+
+.donate-now {
+  list-style-type: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+.donate-later {
+  list-style-type: none;
+  margin: 4px 0 0 0;
+  padding: 0;
+}
+
+.donate-now li {
+  float: left;
+  margin: 0 4px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+
+.donate-now label,
+.donate-now input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.donate-now input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+
+.donate-now input[type="radio"]:checked+label,
+.Checked+label {
+  background: yellow;
+}
+
+.donate-now label {
+  padding: 5px;
+  border: 1px solid #CCC;
+  cursor: pointer;
+  z-index: 90;
+}
+
+.donate-now label:hover {
+  background: #DDD;
+}
+
+.buttonOff {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+  opacity: 0.6;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.buttonOff:hover {opacity: 1}
+.buttonOff:focus {opacity: 1}
+
+.buttonOn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.button2Off {
+  background-color: #0099cc;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+  opacity: 0.6;
+}
+
+.button2Off:hover {opacity: 1}
+.button2Off:focus {opacity: 1}
+
+.button3Off {
+  background-color: #333333;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.button3On {
+  background-color: #333333;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 4px;
+}
+
+.flexbox-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+
+}
+
+.flexbox-item-1 {
+
+}
+
+.flexbox-item-2 {
+
+}
+
+.flexbox-item-3 {
+
+}
+
+.flexbox-item-4 {
+
+}

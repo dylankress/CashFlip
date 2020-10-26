@@ -1,0 +1,96 @@
+h1 {
+  font-weight: bold;
+}
+
+p {
+  color: #a6a6a6;
+}
+
+.betAmount {
+  list-style-type: none;
+  padding: 0;
+}
+.betAmount li {
+  float: left;
+  margin: 0 5px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+  background: #79c97c;
+}
+.betAmount label,
+.betAmount input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #ffffff;
+}
+.betAmount input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+.betAmount input[type="radio"]:checked+label,
+.Checked+label {
+  background-color: green;
+}
+.betAmount label {
+  cursor: pointer;
+  z-index: 90;
+}
+.betAmount label:hover {
+  background: green;
+}
+
+.headsOrTails {
+  list-style-type: none;
+  padding: 0;
+}
+.headsOrTails li {
+  float: left;
+  margin: 0 5px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+  background: #a0c3db;
+}
+.headsOrTails label,
+.headsOrTails input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #ffffff;
+}
+.headsOrTails input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+.headsOrTails input[type="radio"]:checked+label,
+.Checked+label {
+  background-color: #0f4d99;
+}
+.headsOrTails label {
+  cursor: pointer;
+  z-index: 90;
+}
+.headsOrTails label:hover {
+  background: #0f4d99;
+}
+
+.displayResults {
+  margin: 10;
+}
+
+.flexbox-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+}

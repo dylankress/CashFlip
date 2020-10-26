@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="main.css"></script>
+    <script type="text/javascript" src="./abi.js"></script>
+    <script type="text/javascript" src="./web3.min.js"></script>
+    <title>Cash Flip</title>
+  </head>
+    <body>
+      <br>
+      <div class="flexbox-container">
+        <div class="flexbox-item flexbox-item-3">
+        </div>
+      </div>
+      <div class="flexbox-container">
+          <div class="flexbox-item flexbox-item-1">
+            <br>
+            <br>
+            <br>
+              <h1>cash flip</h1>
+              <p>Double your bet by correctly guessing the results of a coin flip</p>
+              <br>
+              <img src="img/mainImage.gif" alt="" style="width: 500px;">
+          </div>
+        </div>
+        <br>
+        <div class="flexbox-container">
+          <div class="flexbox-item flexbox-item-2">
+            <form id="newBetForm" class="playerBet">
+              <ul class="betAmount">
+                <li>
+                  <input type="radio" id="1" value= "1" name="betAmount" checked="checked"/>
+                  <label for="1">$1</label>
+                </li>
+                <li>
+                  <input type="radio" id="5" value= "5" name="betAmount"/>
+                  <label for="5">$5</label>
+                </li>
+                <li>
+                  <input type="radio" id="10" value= "10" name="betAmount"/>
+                  <label for="10">$10</label>
+                </li>
+                <li>
+                  <input type="radio" id="25" value= "25" name="betAmount"/>
+                  <label for="25">$25</label>
+                </li>
+              </ul>
+              <ul class="headsOrTails">
+                <li>
+                  <input type="radio" id="heads" value= "1" name="selection" checked="checked"/>
+                  <label for="heads">heads</label>
+                </li>
+                <li>
+                  <input type="radio" id="tails" value= "0" name="selection"/>
+                  <label for="tails">tails</label>
+                </li>
+              </ul>
+              <button type="submit" name="submitButton" id="submitButton">place bet</button>
+            </form>
+            <form id="ETHdeposit" class="playerBet">
+              <button type="submit" name="depositButton" id="depositButton">deposit ETH</button>
+            </form>
+          </div>
+        </div>
+
+
+      <script>
+
+
+
+fetch('https://min-api.cryptocompare.com/data/price?fsym=USD&tsyms=ETH&api_key=9537568069e20ae091fa456ca7378f511b825c48124a366b92958f42a7622064')
+.then(res => res.json())
+.then(ReadableStream => x = ReadableStream)
+
+var web3 = new Web3(Web3.givenProvider);
+var address = "0xDfD21969F0Cb0EC79326F8C254800B443Dd65F17";
+var CashFlip;
+
+$(document).ready(function() {
+    window.ethereum.enable().then(async function(accounts) {
+        CashFlip = new web3.eth.Contract(abi, address, {from: accounts[0]});
+    });
+  });
+
+    let EXR = 2535000000000000;
+    const newBetForm = document.getElementById("newBetForm");
+    const ETHdeposit = document.getElementById("ETHdeposit");
+
+    newBetForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+          let betAmount = document.querySelector('input[name="betAmount"]:checked').value * EXR;
+        CashFlip.methods.randomFlip(document.querySelector('input[name="selection"]:checked').value).send({
+          value: betAmount
+        })
+        .on('receipt', function(receipt) {
+          if(receipt.events.result.returnValues[0] === false){
+            alert("You lost. Maybe next time!");
+        }
+        else if(receipt.events.result.returnValues[0] === true){
+            alert("Congratulations. You won! Keep it up.");
+        }});
+
+        document.forms[0].reset();
+      });
+
+    ETHdeposit.addEventListener("submit", (d) => {
+          d.preventDefault();
+          CashFlip.methods.depositETH().send({
+            value: 100 * EXR
+          });
+    });
+
+      </script>
+    </body>
+</html>
